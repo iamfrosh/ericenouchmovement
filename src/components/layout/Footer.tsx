@@ -60,6 +60,12 @@ export function Footer() {
         </div>
         <div className="mt-12 flex flex-wrap justify-between gap-4 border-t border-line pt-5 text-[13.5px] text-ink-soft">
           <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
+          <p>
+            Website created by{" "}
+            <a href="https://www.froshx.com.ng/" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#333] underline-offset-4 transition-colors hover:text-brand-green-dark hover:underline">
+              FroshX<span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </p>
         </div>
       </div>
     </footer>

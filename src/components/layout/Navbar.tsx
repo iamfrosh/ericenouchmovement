@@ -40,26 +40,27 @@ export function Navbar() {
   }, [open]);
 
   return (
+    <>
     <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur-md">
       <div className="mx-auto flex h-[76px] w-full max-w-[1160px] items-center justify-between px-5 sm:px-6">
         <BrandLink height={44} />
 
-        <nav aria-label="Primary" className="hidden items-center gap-1.5 lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-1.5 xl:flex">
           {NAV.map((n) => (
             <Link
               key={n.href}
               href={n.href}
               aria-current={isActive(n.href) ? "page" : undefined}
               className={cn(
-                "relative px-3.5 py-2 font-[family-name:var(--font-heading)] text-[14.5px] font-medium text-[#333] transition-colors duration-200 hover:text-brand-green-dark",
-                "after:absolute after:inset-x-3.5 after:bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-brand-green after:transition-transform after:duration-300",
+                "relative px-3 py-2 font-[family-name:var(--font-heading)] text-[14.5px] font-medium text-[#333] transition-colors duration-200 hover:text-brand-green-dark",
+                "after:absolute after:inset-x-3 after:bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-brand-green after:transition-transform after:duration-300",
                 isActive(n.href) && "text-brand-green-dark after:scale-x-100",
               )}
             >
               {n.label}
             </Link>
           ))}
-          <Link href="/contact" className={buttonClass("primary", "ml-3.5 h-10 px-[18px] text-sm")}>
+          <Link href="/contact" className={buttonClass("primary", "ml-2.5 h-10 px-[18px] text-sm")}>
             Contact the Movement
           </Link>
         </nav>
@@ -71,11 +72,13 @@ export function Navbar() {
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => (open ? close() : setOpenPath(pathname))}
-          className="flex size-11 items-center justify-center rounded-lg border border-line bg-white lg:hidden"
+          className="flex size-11 items-center justify-center rounded-lg border border-line bg-white xl:hidden"
         >
           {open ? <X aria-hidden className="size-5" strokeWidth={1.75} /> : <Menu aria-hidden className="size-5" strokeWidth={1.75} />}
         </button>
       </div>
+
+    </header>
 
       <nav
         id="mobile-nav"
@@ -83,7 +86,7 @@ export function Navbar() {
         aria-label="Mobile"
         inert={!open}
         className={cn(
-          "fixed inset-x-0 bottom-0 top-[76px] z-40 flex flex-col overflow-y-auto bg-white px-5 pb-10 pt-4 transition-[opacity,transform,visibility] duration-300 ease-[var(--ease-eem)] lg:hidden",
+          "fixed inset-x-0 bottom-0 top-[76px] z-[85] flex flex-col overflow-y-auto bg-white px-5 pb-10 pt-4 transition-[opacity,transform,visibility] duration-300 ease-[var(--ease-eem)] xl:hidden",
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0",
         )}
       >
@@ -106,6 +109,6 @@ export function Navbar() {
           Contact the Movement
         </Link>
       </nav>
-    </header>
+    </>
   );
 }

@@ -4,7 +4,7 @@ import { siteUrl } from "@/lib/utils";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [articles, leaders] = await Promise.all([getArticles(), getLeaders()]);
-  const pages = ["", "/about", "/leadership", "/news", "/gallery", "/contact", "/privacy"].map((p) => ({ url: `${siteUrl}${p}`, changeFrequency: "monthly" as const }));
+  const pages = ["", "/about", "/leadership", "/leadership/wards", "/news", "/gallery", "/documents", "/contact", "/privacy"].map((p) => ({ url: `${siteUrl}${p}`, changeFrequency: "monthly" as const }));
   return [
     ...pages,
     ...articles.map((a) => ({ url: `${siteUrl}/news/${a.slug}`, lastModified: a.publishedAt })),

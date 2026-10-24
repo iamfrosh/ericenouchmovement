@@ -57,16 +57,16 @@ export function CookieConsent() {
   return (
     <>
       {showBar && (
-        <div role="region" aria-label="Cookie consent" className="fixed inset-x-4 bottom-4 z-[80] max-w-[560px] rounded-2xl border border-line bg-white p-5 shadow-[0_20px_50px_-20px_rgba(0,0,0,.28)] sm:p-[22px]">
+        <div role="region" aria-label="Cookie consent" className="fixed inset-x-4 bottom-4 z-[80] max-w-[560px] rounded-2xl border border-line bg-white p-4 shadow-[0_20px_50px_-20px_rgba(0,0,0,.28)] sm:p-[22px]">
           <div className="mb-2 flex items-center gap-3">
             <span className="flex size-9 items-center justify-center rounded-[10px] bg-brand-green-tint text-brand-green-dark"><Cookie aria-hidden className="size-[18px]" strokeWidth={1.75} /></span>
             <h2 className="text-base">We value your privacy</h2>
           </div>
           <p className="text-sm text-ink-soft">We use essential cookies to run this site, and optional cookies to understand how it is used. Read our <Link href="/privacy#cookies" className="text-brand-green-dark underline underline-offset-4">Cookie Policy</Link>.</p>
-          <div className="mt-4 flex flex-wrap gap-2.5">
-            <button type="button" onClick={() => decide(true, true)} className={buttonClass("primary", "h-[42px] flex-1 px-4 text-sm max-sm:basis-full")}>Accept all</button>
-            <button type="button" onClick={() => decide(false, false)} className={buttonClass("secondary", "h-[42px] flex-1 px-4 text-sm max-sm:basis-full")}>Essential only</button>
-            <button type="button" onClick={() => { setAnalytics(false); setPreferences(false); setModal(true); }} className={buttonClass("secondary", "h-[42px] flex-1 px-4 text-sm max-sm:basis-full")}>Customise</button>
+          <div className="mt-3.5 flex flex-wrap gap-2.5">
+            <button type="button" onClick={() => decide(true, true)} className={buttonClass("primary", "h-11 min-w-0 flex-1 px-4 text-sm")}>Accept all</button>
+            <button type="button" onClick={() => decide(false, false)} className={buttonClass("secondary", "h-11 min-w-0 flex-1 px-4 text-sm")}>Essential only</button>
+            <button type="button" onClick={() => { setAnalytics(false); setPreferences(false); setModal(true); }} className="h-9 w-full text-sm font-semibold text-brand-green-dark underline underline-offset-4">Customise</button>
           </div>
         </div>
       )}
