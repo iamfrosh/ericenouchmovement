@@ -10,9 +10,9 @@ const STATE = "Adamawa";
 const face = (slug: string, name: string) => ({ photo: `/leaders/${slug}.jpg`, photoAlt: `Portrait of ${name}` });
 
 export const EXECUTIVES: Leader[] = [
-  { slug: "yegoshibe-jonah", name: "Yegoshibe Jonah", role: "Adviser", category: "executive", order: 1 },
+  { slug: "yegoshibe-jonah", name: "Yegoshibe Jonah", role: "Adviser", category: "executive", order: 1, ...face("yegoshibe-jonah", "Yegoshibe Jonah") },
   { slug: "prince-seriluh-ibrahim-suleman", name: "Prince Seriluh Ibrahim Suleman", role: "Zonal Coordinator", category: "executive", order: 2, ...face("prince-seriluh-ibrahim-suleman", "Prince Seriluh Ibrahim Suleman") },
-  { slug: "zainab-levi", name: "Zainab Levi", role: "Assistant Zonal Coordinator · LGA Coordinator, Demsa", category: "executive", alsoIn: ["lga"], lga: "Demsa", state: STATE, order: 3 },
+  { slug: "zainab-levi", name: "Zainab Levi", role: "Assistant Zonal Coordinator · LGA Coordinator, Demsa", category: "executive", alsoIn: ["lga"], lga: "Demsa", state: STATE, order: 3, ...face("zainab-levi", "Zainab Levi") },
   { slug: "dishon-edison", name: "Dishon Edison", role: "Head of Media", category: "executive", order: 4 },
   { slug: "wusa-john-kenan", name: "Wusa John Kenan", role: "Videographer · LGA Coordinator, Guyuk", category: "executive", alsoIn: ["lga"], lga: "Guyuk", state: STATE, order: 5, ...face("wusa-john-kenan", "Wusa John Kenan") },
 ];

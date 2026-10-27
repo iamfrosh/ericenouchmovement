@@ -2,6 +2,7 @@ import type { Leader } from "@/types/leadership";
 import type { Article } from "@/types/news";
 import type { GalleryItem } from "@/types/gallery";
 import { LOCAL_LEADERS } from "@/lib/leaders-data";
+import { LOCAL_GALLERY } from "@/lib/gallery-data";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
@@ -60,11 +61,12 @@ export async function getArticle(slug: string): Promise<Article | null> {
 }
 
 export async function getGallery(): Promise<GalleryItem[]> {
-  return (
+  const cms =
     (await query<GalleryItem[]>(
       `*[_type == "galleryItem" && ${PUBLISHED}] | order(order asc){"id": _id, title, "alt": coalesce(image.alt, title), category, "order": coalesce(order, 999), "image": image.asset->url, "width": image.asset->metadata.dimensions.width, "height": image.asset->metadata.dimensions.height, videoUrl}`,
       {},
       "gallery",
-    )) ?? []
-  ).filter((g) => g.image);
+    )) ?? [];
+  // Local approved photos first, then anything published in the CMS.
+  return [...LOCAL_GALLERY, ...cms.filter((g) => g.image).map((g) => ({ ...g, order: g.order + 1000 }))].sort((a, b) => a.order - b.order);
 }

@@ -8,4 +8,5 @@ export interface GalleryItem {
   width: number;
   height: number;
   videoUrl?: string;
+  featured?: boolean;
 }
